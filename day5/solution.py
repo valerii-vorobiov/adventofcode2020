@@ -1,3 +1,6 @@
+from numpy import array, where
+
+
 def read_input():
     with open('input') as f:
         lines = f.read().splitlines()
@@ -26,7 +29,9 @@ def get_boundaries(_min, _max, letters):
 
 
 def main2():
-    pass
+    lines = read_input()
+    seats = array(sorted([get_place_number(line) for line in lines]))
+    return seats[where(seats[1:] - seats[:-1] == 2)] + 1
 
 
 def main(task):
@@ -34,4 +39,4 @@ def main(task):
 
 
 if __name__ == '__main__':
-    print(main(1))
+    print(main(2))
