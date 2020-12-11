@@ -12,7 +12,13 @@ def main1():
 
 
 def main2():
-    pass
+    groups = [line.split('\n') for line in read_input()]
+    return sum(check_group(group) for group in groups)
+
+
+def check_group(lst):
+    answers = [set(i) for i in lst]
+    return len(answers[0].intersection(*answers[1:]))
 
 
 def main(task):
@@ -20,4 +26,4 @@ def main(task):
 
 
 if __name__ == '__main__':
-    print(main(1))
+    print(main(2))
